@@ -55,7 +55,7 @@ class Playground {
                 }
             }
         }
-        sponge(0, 0, 0, maxSize, 3)
+        sponge(0, 0, 0, maxSize, 4)
 
         return scene;
     }
