@@ -29,7 +29,6 @@ class Playground {
         light.intensity = 0.7;
 
         let maxSize = 1
-        let cubes = []
         let masterCube = BABYLON.MeshBuilder.CreateBox("box", {size: maxSize})
         masterCube.setEnabled(false)
         
@@ -42,7 +41,6 @@ class Playground {
                 newCube.scaling.x = size
                 newCube.scaling.y = size
                 newCube.scaling.z = size
-                cubes.push(newCube)
             } else {
                 let newSize = size/3
                 for (let a=-1; a<2; a++) {
@@ -55,7 +53,8 @@ class Playground {
                 }
             }
         }
-        sponge(0, 0, 0, maxSize, 4)
+
+        sponge(0, 0, 0, maxSize, 3)
 
         return scene;
     }
