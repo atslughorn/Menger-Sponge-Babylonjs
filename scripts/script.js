@@ -16,14 +16,26 @@ class Playground {
     static CreateScene(engine, canvas) {
         // This creates a basic Babylon Scene object (non-mesh)
         var scene = new BABYLON.Scene(engine);
+        scene.collisionsEnabled = true
+        scene.gravity = new BABYLON.Vector3(0, -0.0015, 0)
         
-        var camera = new BABYLON.ArcRotateCamera('Camera', Math.PI/4, Math.PI/4, 4, new BABYLON.Vector3(0, 0, 0), scene);
+        var camera = new BABYLON.FreeCamera("FreeCamera", new BABYLON.Vector3(0.2, 0.6, 0.2), scene)
         // This targets the camera to scene origin
         camera.setTarget(BABYLON.Vector3.Zero());
         // This attaches the camera to the canvas
         camera.attachControl(canvas, true);
-        camera.wheelDeltaPercentage = 0.1
-        // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+        camera.minZ = 0.003
+        camera.speed = 0.005
+        camera.intertia = 0
+        camera.checkCollisions = true
+        camera.ellipsoid = new BABYLON.Vector3(0.005, 0.01, 0.005)
+        camera.applyGravity = true
+        camera._needMoveForGravity = true
+        camera.keysUp = [87]; // W
+        camera.keysDown = [83]; // S
+        camera.keysLeft = [65]; // A
+        camera.keysRight = [68]; // D
+        
         var light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(2, 5, 0), scene);
         // Default intensity is 1. Let's dim the light a small amount
         light.intensity = 0.7;
@@ -41,6 +53,7 @@ class Playground {
                 newCube.scaling.x = size
                 newCube.scaling.y = size
                 newCube.scaling.z = size
+                newCube.checkCollisions = true
             } else {
                 let newSize = size/3
                 for (let a=-1; a<2; a++) {
