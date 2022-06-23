@@ -41,18 +41,18 @@ class Playground {
         // This creates a basic Babylon Scene object (non-mesh)
         var scene = new BABYLON.Scene(engine);
         scene.collisionsEnabled = true
-        scene.gravity = new BABYLON.Vector3(0, -0.015, 0)
+        scene.gravity = new BABYLON.Vector3(0, -0.03, 0)
         
-        var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(0.11488070738571338, 5, 0.1850473232694697), scene)
+        var camera = new BABYLON.UniversalCamera("UniversalCamera", new BABYLON.Vector3(-1, 5.22, -2), scene)
         // This targets the camera to scene origin
         camera.setTarget(BABYLON.Vector3.Zero());
         // This attaches the camera to the canvas
         camera.attachControl(canvas, true);
-        camera.minZ = 0.003
+        camera.minZ = 0.05
         camera.speed = 0.002
         camera.intertia = 0
         camera.checkCollisions = true
-        camera.ellipsoid = new BABYLON.Vector3(0.05, 0.1, 0.05)
+        camera.ellipsoid = new BABYLON.Vector3(0.06, 0.1, 0.06)
         camera.applyGravity = true
         camera._needMoveForGravity = true
         camera.keysUp = [87]; // W
